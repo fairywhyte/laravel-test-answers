@@ -9,7 +9,7 @@ class HeroController extends Controller
 
     public function index()
     {
-        $hero = \App\Hero::all();
+        $hero = \App\Hero::all()->sortByDesc("name");;//select all hero in the db order by desc
         $view = view('hero/index');
         $view->hero = $hero;
         return $view;
@@ -24,3 +24,5 @@ class HeroController extends Controller
         return $view;
     }
 }
+
+ 
