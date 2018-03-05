@@ -23,5 +23,6 @@ Route::get('/hero', 'HeroController@index');
 Route::get('/hero/{slug}', 'HeroController@show');
 
 //create form
-Route::post('/hero/store', 'HeroController@store');
+Route::get('/hero/{slug}/create', 'HeroController@create');
+Route::post('/hero/{slug}/store', 'HeroController@store');
 //Route::post('/questions', 'QuestionController@store')->middleware('auth');

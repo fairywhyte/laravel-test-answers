@@ -24,18 +24,20 @@ class HeroController extends Controller
         return $view;
     }
 
-    public function store(Request $request)
+    public function store(Request $request,$slug)
     {
-            $hero = new Hero();
-            $hero ->user_id =1;
-			$hero->subject = $request->input('subject');
-			$hero->description = $request->input('description');
-            $hero->save();
-            return Hero::all();
-            return redirect(action('HeroController@show'));
+        $newRow = new Hero();
+        $newRow = Hero::where ('slug','=',$slug)->first();
+        $newRow ->subject= $request ->input('subject');//input the subject into database
+        $newRow ->description = $request ->input('description');
+        $newRow ->hero_id = $hero->id;
+        $newRow ->save();
+        return redirect(action('HeroController@index'));
+    }
+    public function create($slug)
+    {
+        $view =view('layouts.app');
+        $view->slug =$slug;
+        return $view;
     }
 }
-
-// $name= $request->input('name','Fadz');
-//        $message= $request->input('message');
-//return view('form/index')->with('messages',$messages);

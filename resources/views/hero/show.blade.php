@@ -28,16 +28,15 @@
         <h2>Report an emergency</h2>
 
 
-    <form action="{{ action('HeroController@store'),$hero ->}}" method="post">
+    <form action="{{ action('HeroController@store'),$hero->$slug}}" method="post">
         {!! csrf_field() !!}
         @foreach($hero->hero as $heroes)
-            <input type="text" name="subject" placeholder="Cause of emergency">
-            {{ $heroes->subject }}
-            <textarea name="description" placeholder="Thorough description"></textarea>
-            {{ $heroes->description }}
+            <input type="text" name="subject" placeholder="Cause of emergency" value="{{ $heroes->subject }}">
 
-            <input type="submit" value="Send to the Watchtower">
-            @endforeach
+            <textarea name="description" placeholder="Thorough description" value="{{ $heroes->description }}"></textarea>
+
+            <input type="submit" value="{{ action('OptionController@create',[$poll->code]) }}">
+        @endforeach
         </form>
 
     </section>
