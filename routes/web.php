@@ -21,3 +21,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('homepage');
 Route::get('/hero', 'HeroController@index');
 Route::get('/hero/{slug}', 'HeroController@show');
+
+//create form
+Route::post('/hero/store', 'HeroController@store');
+//Route::post('/questions', 'QuestionController@store')->middleware('auth');

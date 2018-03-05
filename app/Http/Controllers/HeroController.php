@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Hero;
 class HeroController extends Controller
@@ -23,6 +23,19 @@ class HeroController extends Controller
         $view->hero = $hero;
         return $view;
     }
+
+    public function store(Request $request)
+    {
+            $hero = new Hero();
+            $hero ->user_id =1;
+			$hero->subject = $request->input('subject');
+			$hero->description = $request->input('description');
+            $hero->save();
+            return Hero::all();
+            return redirect(action('HeroController@show'));
+    }
 }
 
- 
+// $name= $request->input('name','Fadz');
+//        $message= $request->input('message');
+//return view('form/index')->with('messages',$messages);
