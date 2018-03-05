@@ -13,7 +13,12 @@ class CreateTableEmergencies extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('emergencies', function (Blueprint $table) {
+        $table->integer('user_id');
+        $table->integer('hero_id');
+        $table->string('subject');
+        $table->string('description')->nullable(); // makes the column nullable
+        });
     }
 
     /**
