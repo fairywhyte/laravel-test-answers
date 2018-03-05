@@ -19,4 +19,5 @@ Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('homepage');
+Route::get('/hero', 'HeroController@index');
 Route::get('/hero/{slug}', 'HeroController@show');
