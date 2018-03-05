@@ -11,6 +11,7 @@
 </head>
 <body>
 
+
     <nav class="menu">
         <a href="{{ route('homepage') }}">Home</a>
         @guest
