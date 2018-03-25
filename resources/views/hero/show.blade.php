@@ -2,23 +2,18 @@
 
 @section('content')
 <div class="page page-hero">
-
     <section class="info">
-
-        <img class="portrait" src="{{ asset('img/'.$hero->slug.'.jpg') }}" alt="">
-
+        <img class="portrait" src="{{asset('img/'.$hero->slug.'.jpg') }}" alt="">
         <div class="data">
             <h1>{{ $hero->name }}</h1>
-
             <div class="story">
-                {!! nl2br($hero->backstory) !!}
+            {!! nl2br($hero->backstory) !!}
             </div>
         </div>
 
         <div class="availability">
             <h2>Availability</h2>
             From {{ date('g:i A', strtotime($hero->available_from)) }} to {{ date('g:i A', strtotime($hero->available_until)) }}.
-
             <div class="status unavailable">Current status: <span>Unavailable</span></div>
         </div>
 
@@ -26,19 +21,16 @@
 
     <section class="emergency-report">
         <h2>Report an emergency</h2>
-
-
     <form action="{{ action('HeroController@store',[$hero->slug])}}" method="post">
         {!! csrf_field() !!}
-        @foreach($hero as $heroes)
-            <input type="text" name="subject" placeholder="Cause of emergency" value="{{ $heroes->subject }}">
+        {{--  @foreach($hero->emergencies as $emergency)  --}}
+             <input type="text" name="subject" placeholder="Cause of emergency" value="">
 
-            <textarea name="description" placeholder="Thorough description" value="{{ $heroes->description }}"></textarea>
+            <textarea name="description" placeholder="Thorough description" value=""></textarea>
 
             <input type="submit" value="Send to the Watchtower" href="{{ action('HeroController@store',[$hero->slug]) }}">
-        @endforeach
+    {{--  @endforeach  --}}
         </form>
-
     </section>
 
 </div>

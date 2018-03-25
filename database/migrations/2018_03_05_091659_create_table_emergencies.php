@@ -11,13 +11,17 @@ class CreateTableEmergencies extends Migration
      *
      * @return void
      */
+    /** Migrations
+     * Create a database migration to create a table called emergencies
+     */
     public function up()
     {
         Schema::create('emergencies', function (Blueprint $table) {
-        $table->integer('user_id');
-        $table->integer('hero_id');
-        $table->string('subject');
+        $table->integer('user_id')->nullable();
+        $table->integer('hero_id')->nullable();
+        $table->string('subject')->nullable();
         $table->string('description')->nullable(); // makes the column nullable
+        $table->timestamps();
         });
     }
 
@@ -28,6 +32,6 @@ class CreateTableEmergencies extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('emergencies');
     }
 }

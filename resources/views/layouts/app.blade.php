@@ -13,6 +13,7 @@
 
 
     <nav class="menu">
+        <!-- Routing#1 -->
         <a href="{{ route('homepage') }}">Home</a>
         @guest
             <a href="{{ route('login') }}">Login</a>
